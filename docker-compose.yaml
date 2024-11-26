@@ -1,0 +1,37 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    ports:
+      - "50051:50051"
+    depends_on:
+      - database
+    environment:
+      - DATABASE_URL=postgresql://hw1:password@database:5432/mydb
+    restart: always
+
+  data_collector:
+    build:
+      context: .
+      dockerfile: ./data_collector/Dockerfile
+    depends_on:
+      - database
+    environment:
+      - DATABASE_URL=postgresql://hw1:password@database:5432/mydb
+    restart: always 
+
+  database:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: hw1
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always 
+
+volumes:
+  db_data:

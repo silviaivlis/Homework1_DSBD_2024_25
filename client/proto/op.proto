@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+service User_service{
+
+    //Funzionalità di gestione degli utenti
+    rpc RegisterUser (RegUserRequest) returns (RegUserResponse);
+    rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse);
+    rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
+
+    //Funzionalità di recupero delle informazioni
+    rpc GetLatestValue (GetLatestValueRequest) returns (GetLatestValueResponse);
+    rpc CalcAvarageValue (CalcAvarageValueRequest) returns (CalcAvarageValueResponse);
+}
+
+//Utente
+message RegUserRequest{
+    string email = 1;
+    string ticker = 2;
+    string requestId = 3;
+}
+
+message RegUserResponse{
+    string message = 1;
+}
+
+message UpdateUserRequest{
+    string email = 1;
+    string ticker = 2;
+    string requestId = 3;
+}
+
+message UpdateUserResponse{
+    string message = 1;
+}
+
+message DeleteUserRequest{
+    string email = 1;
+    string requestId = 2;
+}
+
+message DeleteUserResponse{
+    string message = 1;
+}
+
+//Funzionalità
+message GetLatestValueRequest{
+    string email = 1;
+}
+
+message GetLatestValueResponse{
+    string email = 1;
+    string ticker = 2;
+    double value = 3;
+    string timestamp = 4;
+}
+
+message CalcAvarageValueRequest{
+    string email = 1;
+    int32 count = 2; 
+}
+
+message CalcAvarageValueResponse{
+    string email = 1;
+    string ticker = 2;
+    double averageValue = 3;
+}

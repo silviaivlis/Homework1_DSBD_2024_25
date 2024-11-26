@@ -1,0 +1,8 @@
+grpcio==1.68.0
+grpcio-tools==1.68.0
+protobuf==5.28.3
+psycopg2-binary==2.9.10
+setuptools==75.6.0
+SQLAlchemy==2.0.36
+typing_extensions==4.12.2
+yfinance==0.2.50
