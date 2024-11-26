@@ -86,7 +86,7 @@ def main():
             timeRemaining = cleanInterval - lastClean
             print(f"Prossima pulizia tra {str(timeRemaining).split('.')[0]}")
 
-        time.sleep(60)
+        time.sleep(180)
 
 if __name__ == "__main__":
     main()
